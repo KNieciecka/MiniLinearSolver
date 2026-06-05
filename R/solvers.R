@@ -14,7 +14,7 @@
 #' }
 #' 
 #' @examples
-#' A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
 #' lu_decompose(A)
 #' 
 #' @useDynLib MiniLinearSolver, .registration = TRUE
@@ -32,7 +32,7 @@ lu_decompose <- function(A) {
 #' @return The numeric value of the determinant. If the matrix is singular, it returns 0.
 #' 
 #' @examples
-#' A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
 #' lu_det(A)
 #' 
 #' @export
@@ -51,7 +51,7 @@ lu_det <- function(A) {
 #' @return A numeric vector representing the solution to the system of equations.
 #' 
 #' @examples
-#' A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
 #' b <- c(4, -2, 7)
 #' lu_solve(A, b)
 #' 
@@ -79,7 +79,7 @@ lu_solve <- function(A, b) {
 #' }
 #' 
 #' @examples
-#' A <- matrix(c(10, -1, 2, 0, -1, 11, -1, 3, 2, -1, 10, -1, 0, 3, -1, 8), 4, 4, byrow=TRUE)
+#' A <- matrix(c(10, -1, 2, 0, -1, 11, -1, 3, 2, -1, 10, -1, 0, 3, -1, 8), 4, 4)
 #' b <- c(6, 25, -11, 15)
 #' sor_solve(A, b, omega = 1.1)
 #' 
