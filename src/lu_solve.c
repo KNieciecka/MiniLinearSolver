@@ -3,12 +3,12 @@
 SEXP solve_lu(SEXP rA, SEXP rb){
 
     //zabezpieczenia
-    if(!Rf_isReal(rA) || !Rf_isMatrix(rA)) Rf_error("Macierz wejściowa musi być numeryczna.");
-    if(!Rf_isReal(rb)) Rf_error("Wektor wejściowy musi być numeryczny.");
+    if(!Rf_isReal(rA) || !Rf_isMatrix(rA)) Rf_error("The input matrix must be numeric");
+    if(!Rf_isReal(rb)) Rf_error("The input argument must be a matrix.");
 
     int n = Rf_nrows(rA);
-    if(n != Rf_ncols(rA)) Rf_error("Macierz wejściowa musi być kwadratowa.");
-    if(n != Rf_length(rb)) Rf_error("Długość wektora wejściowego musi odpowiadać wymiarom macierzy wejściowej.");
+    if(n != Rf_ncols(rA)) Rf_error("The input matrix must be square.");
+    if(n != Rf_length(rb)) Rf_error("The length of the input vector must match the dimensions of the input matrix.");
     if(n ==0) return Rf_allocVector(REALSXP, 0);
 
     // rozklad LU
@@ -21,7 +21,7 @@ SEXP solve_lu(SEXP rA, SEXP rb){
 
     if(swaps == -1){
         UNPROTECT(1);
-        Rf_error("Macierz wejściowa jest osobliwa, układ nie ma jednoznacznego rozwiązania.");
+        Rf_error("The input matrix is singular; the system does not have a unique solution.");
     }
 
     double* L = REAL(rL);

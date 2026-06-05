@@ -4,13 +4,13 @@
 SEXP solve_SOR(SEXP rA, SEXP rb, SEXP rOmega, SEXP rTol, SEXP rMaxIter){
 
     // zabezbieczenia 
-    if(!Rf_isReal(rA) || !Rf_isMatrix(rA)) Rf_error("Macierz wejściowa musi być numeryczna.");
-    if(!Rf_isReal(rb)) Rf_error("Wektor wejściowy musi być numeryczny.");
-    if(!Rf_isReal(rOmega) || !Rf_isReal(rTol)) Rf_error("Omega i tolerancja muszą być typu numeric.");
+    if(!Rf_isReal(rA) || !Rf_isMatrix(rA)) Rf_error("The input matrix must be numeric.");
+    if(!Rf_isReal(rb)) Rf_error("The input vector must be numeric.");
+    if(!Rf_isReal(rOmega) || !Rf_isReal(rTol)) Rf_error("Omega and tolerance must be of numeric type.");
     
     int n = Rf_nrows(rA);
-    if(n != Rf_ncols(rA)) Rf_error("Macierz wejściowa musi być kwadratowa.");
-    if(n != Rf_length(rb)) Rf_error("Długość wektora wejściowego musi odpowiadać wymiarom macierzy wejściowej.");
+    if(n != Rf_ncols(rA)) Rf_error("The input matrix must be square.");
+    if(n != Rf_length(rb)) Rf_error("The length of the input vector must match the dimensions of the input matrix.");
     if(n == 0) return Rf_allocVector(REALSXP, 0);
 
     double* A = REAL(rA);
@@ -21,7 +21,7 @@ SEXP solve_SOR(SEXP rA, SEXP rb, SEXP rOmega, SEXP rTol, SEXP rMaxIter){
 
     for(int i=0; i<n; i++) {
         if(fabs(A[i*n + i]) < 1e-12) {
-            Rf_error("Metoda SOR wymaga niezerowych elementów na głównej przekątnej macierzy wejściowej.");
+            Rf_error("The SOR method requires non-zero elements on the main diagonal of the input matrix.");
         }
     }
     
@@ -66,7 +66,7 @@ SEXP solve_SOR(SEXP rA, SEXP rb, SEXP rOmega, SEXP rTol, SEXP rMaxIter){
     }
 
     if(iter == max_iter){
-        Rf_warning("Osiągnięto maksymalną liczbę iteracji. Metoda może nie być zbierzna.");
+        Rf_warning("The maximum number of iteration was reached. The method may not converge.");
     }
 
     // wyniki
@@ -79,10 +79,10 @@ SEXP solve_SOR(SEXP rA, SEXP rb, SEXP rOmega, SEXP rTol, SEXP rMaxIter){
 
     PROTECT(names = Rf_allocVector(STRSXP, 2));
     SET_STRING_ELT(names, 0, Rf_mkChar("x"));
-    SET_STRING_ELT(names, 1, Rf_mkChar("iteracje"));
+    SET_STRING_ELT(names, 1, Rf_mkChar("iterations"));
     Rf_setAttrib(list, R_NamesSymbol, names);
 
     UNPROTECT(4);
-    
+
     return list;
 }

@@ -1,15 +1,16 @@
 #include "pakiet.h"
 #include <stdio.h>
 #include <math.h>
+#include <omp.h>
 
 SEXP lu_decompose(SEXP rA){
 
     // zabezpieczenia
-    if(!Rf_isReal(rA)) Rf_error("Macierz wejściowa musi być numeryczna.");
-    if(!Rf_isMatrix(rA)) Rf_error("Argument wejściowy musi być macierzą.");
+    if(!Rf_isReal(rA)) Rf_error("The input matrix must be numeric.");
+    if(!Rf_isMatrix(rA)) Rf_error("The input argument must be a matrix.");
     
     int n = Rf_nrows(rA);
-    if(n != Rf_ncols(rA)) Rf_error("Macierz wejściowa musi być kwadratowa.");
+    if(n != Rf_ncols(rA)) Rf_error("The input matrix must be square.");
     
     if(n == 0) return Rf_allocVector(VECSXP, 0);
 
@@ -59,7 +60,7 @@ SEXP lu_decompose(SEXP rA){
         // gdy macierz wejsciowa jest osobliwa
         if(max_val < 1e-12) {
             swaps[0] = -1; // błąd
-            Rf_warning("Macierz wejściowa jest osobliwa.");
+            Rf_warning("The input matrix is singular.");
             break; 
         }
 
@@ -86,6 +87,7 @@ SEXP lu_decompose(SEXP rA){
 
         // gauss
         L[k * n + k] = 1.0; // 1 na przekatnej L
+        #pragma omp parallel for
         for(int i = k + 1; i < n; i++) {
             double wsp = U[k * n + i] / U[k * n + k];
             L[k * n + i] = wsp;
