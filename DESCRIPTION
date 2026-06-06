@@ -2,8 +2,7 @@ Package: MiniLinearSolver
 Version: 0.1.0
 Date: 2026-05-06
 Title: Mini Linear System Solver
-Author: Karolina Nieciecka
-Maintainer: Karolina Nieciecka <karolinanieciecka05@gmail.com>
+Authors@R: person("Karolina", "Nieciecka", email = "karolinanieciecka05@gmail.com", role = c("aut", "cre"))
 Description: A package for solving systems of linear equations using the
     Lu decomposition method with partial pivoting and the iterative 
     SOR method. The algorithms are implemented in C with OpenMP API.

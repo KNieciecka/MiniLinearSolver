@@ -3,7 +3,7 @@
 # rozklad lu
 test_that("Poprawność rozkładu LU: PA = LU", {
   
-  A <- matrix(c(2, 1, 1, 4, -6, 0,-2, 7, 2), nrow=3)
+  A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), nrow = 3)
   
   wynik <- lu_decompose(A)
   
@@ -54,6 +54,22 @@ test_that("Poprawność rozwiązywania układu metodą LU", {
   expect_equal(lu_solve(A, b), solve(A, b))
 })
 
+# układ sprzeczny
+test_that("Poprawność metody Lu dla układu sprzecznego",{
+  A_sprzecz <- matrix(c(1, 1, 1, 1), nrow = 2 )
+  b_sprzecz <- c(2, 3)
+
+  expect_error(suppressWarnings(lu_solve(A_sprzecz, b_sprzecz)))
+})
+
+# ukłąd nieoznaczony
+test_that("Poprawność metody LU dla układu nieoznaczonego",{
+  A_nieoz <- matrix(c(1, 2, 1, 2), nrow = 2)
+  b_nieoz <- c(2, 4)
+
+  expect_error(suppressWarnings(lu_solve(A_nieoz, b_nieoz)))
+})
+
 #male wartosci
 test_that("Poprawność rozwiązywania układu LU dla małych wartości", {
   A_m <- matrix(c(1e-8, 3e-8,2e-8, 4e-8), nrow=2)
@@ -77,11 +93,38 @@ test_that("Poprawność rozwiązywania układu metodą SOR", {
 test_that("Poprawność metody SOR dla macierzy rozbieżnej", {
   A_rozb <- matrix(c(1, 10,10, 1), nrow=2)
   b <- c(1, 1)
-  limit <- 50
+  limit <- 100
   
   wynik_sor <- suppressWarnings(sor_solve(A_rozb, b, max_iter = limit))
   
   expect_equal(wynik_sor$iterations, limit)
+})
+
+# układ sprzeczny
+test_that("Poprawność metody SOR dla układu sprzecznego", {
+  A_sprzecz <- matrix(c(1, 1, 1, 1), nrow = 2)
+  b_sprzecz <- c(2, 3)
+  
+  limit <- 100
+  
+  wynik_sor <- suppressWarnings(sor_solve(A_sprzecz, b_sprzecz, max_iter = limit))
+  
+  expect_equal(wynik_sor$iterations, limit)
+})
+
+# układ nieoznaczony
+test_that("Poprawność metody SOR dla układu nieoznaczonego", {
+  A_nieoz <- matrix(c(1, 2, 1, 2), nrow = 2)
+  b_nieoz <- c(2, 4)
+  limit <- 100
+  
+  wynik_sor <- suppressWarnings(sor_solve(A_nieoz, b_nieoz, max_iter = limit))
+  
+  lewa_str <- as.numeric(A_nieoz %*% wynik_sor$x)
+  
+  expect_equal(lewa_str, b_nieoz, tolerance = 1e-6)
+  
+  expect_true(wynik_sor$iterations < limit)
 })
 
 # errory
@@ -91,6 +134,7 @@ test_that("Poprawność wyrzucania błędów", {
   
   expect_error(lu_decompose(A_niekwad))
   expect_error(lu_solve(A_niekwad, b))
+  expect_error(sor_solve(A_niekwad,b))
 
-  expect_error(lu_det("to jest tekst"))
+  expect_error(lu_det("to jest jakis tekst"))
 })
