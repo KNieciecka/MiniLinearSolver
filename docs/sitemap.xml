@@ -1,0 +1,13 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/lu_decompose.html</loc></url>
+<url><loc>/reference/lu_det.html</loc></url>
+<url><loc>/reference/lu_solve.html</loc></url>
+<url><loc>/reference/sor_solve.html</loc></url>
+</urlset>
+
