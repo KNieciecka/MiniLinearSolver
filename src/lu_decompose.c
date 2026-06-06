@@ -1,7 +1,9 @@
 #include "pakiet.h"
 #include <stdio.h>
 #include <math.h>
+#ifdef _OPENMP
 #include <omp.h>
+#endif
 
 SEXP lu_decompose(SEXP rA){
 
