@@ -35,6 +35,14 @@ test_that("Poprawność rozkładu Lu dla macierzy jednostkowej", {
   expect_equal(lu_det(I), 1)
 })
 
+# zerowa kolumna
+test_that("Poprawność rozkładu LU dla macierzy z zerową kolumną", {
+  A_zer <- matrix(c(0, 0, 0, 2, 4, 1, 5, 3, 2), nrow = 3, ncol = 3)
+  b_test <- c(1, 2, 3)
+  
+  expect_error(suppressWarnings(lu_solve(A_zerowa, b_test)))
+})
+
 # wyznacznik
 test_that("Poprawność obliczania wyznacznika", {
   A <- matrix(c(2, 4,-2,1,-6,7,1,0,2), nrow=3)

@@ -16,7 +16,7 @@ The numeric value of the determinant. If the matrix is singular, it returns 0.
 The function calculates the determinant of a square matrix based on its LU decomposition.
 }
 \examples{
-A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 lu_det(A)
 
 }

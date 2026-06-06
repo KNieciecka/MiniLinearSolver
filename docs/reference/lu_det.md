@@ -23,7 +23,7 @@ returns 0.
 ## Examples
 
 ``` r
-A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 lu_det(A)
 #> [1] -16
 ```

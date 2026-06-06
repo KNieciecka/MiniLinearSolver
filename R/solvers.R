@@ -14,7 +14,7 @@
 #' }
 #' 
 #' @examples
-#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 #' lu_decompose(A)
 #' 
 #' @useDynLib MiniLinearSolver, .registration = TRUE
@@ -32,7 +32,7 @@ lu_decompose <- function(A) {
 #' @return The numeric value of the determinant. If the matrix is singular, it returns 0.
 #' 
 #' @examples
-#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 #' lu_det(A)
 #' 
 #' @export
@@ -42,7 +42,7 @@ lu_det <- function(A) {
 
 #' @title Solving systems of linear equations using LU decomposition
 #' 
-#' @description The function solves a system of linear equations $Ax = b$ using 
+#' @description The function solves a system of linear equations \code{Ax = b} using 
 #' LU decomposition.
 #' 
 #' @param A A square numeric matrix of the system's coefficients.
@@ -51,7 +51,7 @@ lu_det <- function(A) {
 #' @return A numeric vector representing the solution to the system of equations.
 #' 
 #' @examples
-#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrows = 3)
+#' A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 #' b <- c(4, -2, 7)
 #' lu_solve(A, b)
 #' 

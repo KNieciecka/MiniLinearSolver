@@ -15,11 +15,11 @@ lu_solve(A, b)
 A numeric vector representing the solution to the system of equations.
 }
 \description{
-The function solves a system of linear equations $Ax = b$ using 
+The function solves a system of linear equations \code{Ax = b} using 
 LU decomposition.
 }
 \examples{
-A <- matrix(c(2, 1, 1, 4, -6, 0, -2, 7, 2), 3, 3, byrow=TRUE)
+A <- matrix(c(2, 4, -2, 1, -6, 7, 1, 0, 2), nrow = 3)
 b <- c(4, -2, 7)
 lu_solve(A, b)
 
