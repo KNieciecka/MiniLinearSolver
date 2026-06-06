@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(pakiet)
+library(MiniLinearSolver)
 
-test_check("pakiet")
+test_check("MiniLinearSolver")
