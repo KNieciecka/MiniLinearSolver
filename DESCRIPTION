@@ -6,10 +6,7 @@ Authors@R: person("Karolina", "Nieciecka", email = "karolinanieciecka05@gmail.co
 Description: A package for solving systems of linear equations using the
     Lu decomposition method with partial pivoting and the iterative 
     SOR method. The algorithms are implemented in C with OpenMP API.
-    Pakiet do rozwiązywania układów równań liniowych za pomocą 
-    bezpośredniej metody LU (z wyborem elementu głównego) oraz iteracyjnej metody SOR.
-    Podstawowe algorytmy zostały zaimplementowane w języku C z wykorzystaniem OpenMP.
-License: GPL (>= 3)
+License: GPL
 Encoding: UTF-8
 Suggests: testthat
 Config/testthat/edition: 3
