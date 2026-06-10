@@ -1,7 +1,7 @@
 # MiniLinearSolver <img src="man/figures/logo.png" align="right" height="139" />
 
  <!-- badges: start -->
-  [![R-CMD-check](https://github.com/KNieciecka/MiniLilearSolver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KNieciecka/MiniLinearSolver/actions/workflows/R-CMD-check.yaml)
+  [![R-CMD-check](https://github.com/KNieciecka/MiniLinearSolver/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KNieciecka/MiniLinearSolver/actions/workflows/R-CMD-check.yaml)
   <!-- badges: end -->
 
 **MiniLinearSolver** is a R package made for solving systems of linear equations. It uses optimized C code with OpenMP API to provide fast and reliable numerical solutions.
