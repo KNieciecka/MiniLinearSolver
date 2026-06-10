@@ -29,8 +29,8 @@
 You can install the development version of MiniLinearSolver from GitHub:
 
 ```R
-# install.packages("devtools")
-devtools::install_github("KNieciecka/MiniLinearSolver")
+# install.packages("pak")
+pak::pak("KNieciecka/MiniLinearSolver")
 ```
 
 **License:** `MiniLinearSolver` source code is distributed under the open-source GPL-3 license. For more details, see [LICENSE](LICENSE.md).

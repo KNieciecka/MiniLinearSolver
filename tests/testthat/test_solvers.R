@@ -97,7 +97,7 @@ test_that("Poprawność rozwiązywania układu metodą SOR", {
   expect_equal(as.numeric(wynik_sor$x), as.numeric(wynik_r), tolerance = 1e-6)
 })
 
-# nie zbieżne SOR
+# nie zbiezne SOR
 test_that("Poprawność metody SOR dla macierzy rozbieżnej", {
   A_rozb <- matrix(c(1, 10,10, 1), nrow=2)
   b <- c(1, 1)
